@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 const DB = process.env.DB;
-
+console.log(DB);
 
 try {
   const MongoClient = require('mongodb').MongoClient;
