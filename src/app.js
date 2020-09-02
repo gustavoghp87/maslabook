@@ -7,6 +7,7 @@ const app = express();
 require('dotenv').config();
 const DB = process.env.DB;
 console.log(DB);
+console.log("counter", process.env.counterPsw)
 
 try {
   const uri = DB;
