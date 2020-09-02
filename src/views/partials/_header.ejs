@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Carlos Maslaton App - MaslaZoom - MaslaStory - MaslaBoard - MaslaApp"/>
+    <title>maslabook.com</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("i-recaptcha").submit();
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+
+    <style>
+      .maslabook {        
+        padding:0px;
+        background-color: white;
+      }
+
+      @font-face {
+        font-family: 'klavikaboldwebfont';
+        src: url('klavikaboldwebfont.eot');
+        src: local('klavikaboldwebfont'), url('klavikaboldwebfont.woff') format('woff'), url('.klavikaboldwebfont.ttf') format('truetype');
+      }
+
+      .fontsforweb_fontid_77695 {
+        font-family: 'klavikaboldwebfont' !important;
+        font-size: 2.2rem;
+      }
+
+      @media screen and (max-width: 1200px) {
+        #colNav {padding-left: 1% !important;}
+      }
+
+      @media screen and (max-width: 990px) {
+
+        .fontsforweb_fontid_77695 {
+          font-family: 'klavikaboldwebfont' !important;
+          font-size: 1.5rem !important;
+        }
+
+        .container.maslaboard {
+          max-width: 95% !important;
+        }
+
+        .head {
+          padding-top: 0px;
+        }
+
+        .destacados {
+          margin: auto;
+          padding-top: 20px !important;
+          padding-left: 40px !important;
+          padding-right: 40px !important;
+          padding-bottom: 20px !important;
+        }
+
+        #filtrarMeses {
+          display: block;
+          margin: auto;
+        }
+
+        #recomendados {
+          margin-top:20px !important;
+        }
+
+        .container {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+
+        .card-header {
+          padding-top: 0px;
+          padding-left: 3px;
+          padding-right: 3px;
+          margin: auto;
+        }
+
+        p.far.fontsforweb_fontid_77695 {
+          font-size: 0.9rem !important;
+          max-width: 100%;
+          height: auto;
+          word-wrap: break-word;
+        }
+
+        p.fontsforweb_fontid_77695 {
+          margin-bottom: 5px;
+          font-size: 1rem !important;
+        }
+
+        span {
+          font-size: 1.2rem;
+        }
+
+        .tw0 {
+          max-height: 20px !important;
+        }
+
+        .fb {
+          max-height: 50px !important;
+        }
+
+        .rowYears {
+          margin-left: 50px !important;
+        }
+
+        .rowSN {
+          margin: auto !important;
+          padding-right: 0px !important;
+        }
+
+        #customCheck1 {
+          display: block !important;
+          margin: auto !important;
+          padding-bottom: 10px;
+        }
+
+        .board {
+          font-size: 1.1 rem !important;
+        }
+
+        .teo {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+
+        .ulIndex {
+          padding-left: 7%;
+          padding-right: 5%;
+        }
+
+        a.anchorIndex:link {
+          color: #3b5998;
+          font-weight: 700;
+        }
+
+        a.anchorIndex:visited {
+          color: #3b5998;
+          font-weight: 800;
+        }
+
+        a.anchorIndex:hover {
+          color: darkblue;
+          font-weight: 800;
+        }
+        /* a:link - a normal, unvisited link */
+        /* a:visited - a link the user has visited */
+        /* a:hover - a link when the user mouses over it */
+        /* a:active - a link the moment it is clicked */
+
+      }
+
+      /* CHECKBOXES */
+      .btn-group-toggle .btn:not(:disabled):not(.disabled).active, .btn-group-toggle .btn:not(:disabled):not(.disabled):active, .show>.btn.dropdown-toggle {
+        color: #fff;
+        background-color: #3b5998;
+        border-color: black;
+      }
+      /* non selected btn css */
+      .btn-group-toggle .btn {
+        color: #fff;
+        background-color: gray;
+        border-color: black;
+      }
+
+      /* YEARS CHECKBOXES */
+      .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+          background-color: #3b5998;
+          border-color: black;
+      }
+
+    </style>
+
+<!-- 
+    <script>
+      document.cookie="same-site-cookie=foo; SameSite=Lax"; 
+      document.cookie="cross-site-cookie=bar;SameSite=None;Secure";
+    </script> -->
+
+  </head>  <!-- navbar-inverse bg-inverse -->
+
+
+  <body style="background-color:#bec3cc;">
+    
+    <div class="container maslabook">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4" style="background-color:#3b5998 !important; padding-top:15px !important;">
+       
+        <a class="navbar-brand fontsforweb_fontid_77695" href="/" style="margin-left:3%;">
+          <b style="font-size:2.5rem;">maslabook</b>
+        </a>
+
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown" style="margin-left:3%;">
+          <ul class="navbar-nav">
+            <div class="col-sm-4" style="padding-left:3%;" id="colNav">
+              <li class="nav-item">
+                <a class="nav-link fontsforweb_fontid_77695" href="/maslastory"> 
+                  <b class="nlink" style="color:white; font-size:2.1rem;">maslastory</b> <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </div>
+            <div class="col-sm-4" style="padding-left:5%;" id="colNav">
+              <li class="nav-item">
+                <a class="nav-link fontsforweb_fontid_77695" href="/maslaboard"> 
+                  <b class="nlink" style="color:white; font-size:2.1rem;">maslaboard</b> 
+                </a>
+              </li>
+            </div>
+            <!-- <div class="col-sm-3" style="padding-left:0px;">
+              <li class="nav-item">
+                <a class="nav-link fontsforweb_fontid_77695" href="/maslanomics">
+                  <b class="nlink" style="color:white;">maslanomics</b> 
+                </a>
+              </li>
+            </div> -->
+            <div class="col-sm-4" style="padding-left:8%;" id="colNav">
+              <li class="nav-item">
+                <a class="nav-link fontsforweb_fontid_77695" href="/maslazoom"> 
+                  <b class="nlink" style="color:white; font-size:2.1rem;" id="zoom">maslazoom</b> 
+                </a>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="head" style="padding-top:5px;">
+        <a href="/">
+          <img src="mb-logo.png" style="display:block; margin:auto; max-height:80px; margin-top:30px;" /> 
+        </a>
+
+        <p class="fontsforweb_fontid_77695"
+        style="text-align:center; font-size: 1.3rem; padding-top:10px; padding-bottom:50px;">
+        Esta app es Indestructible * Invencible * Inmortal
+        </p>
+      </div>

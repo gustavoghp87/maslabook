@@ -1,0 +1,417 @@
+
+<%-include('partials/_header.ejs')-%>
+
+<div class="container maslabook2" style="max-width: 95%;">
+  <span style="display:none;" id="lasty"><%= posts[posts.length-1].lasty %></span>
+
+  <!-- SEARCH -->
+  <div class="container" style="padding-top:30px; margin-bottom:50px;">
+    <form action="/search" method="POST" id='i-recaptcha'>
+      <div class="row" style="margin-bottom:40px;">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" type="text" name="words" id="searchInput"
+             style="width:90%; margin:auto;" placeholder="Palabras" />
+          </div>
+        </div>
+        <div class="col-lg-4" >
+          <button class="btn btn-success fontsforweb_fontid_77695 g-recaptcha" id="searchBtn" style="width:100%; background-color:red; border-color:red; color:white; font-size:1.6rem; border-radius: 8px; display:block; margin:auto;" data-sitekey="6Ld5s6YZAAAAADGVNUaeE0veqGxFvLX-R6CQwO-d" data-callback='onSubmit'>
+            buscar
+          </button>
+        </div>
+      </div>
+      <script>
+        try {
+          document.getElementById('searchInput').value = document.getElementById('lasty').innerText;
+        } catch(e) {}
+      </script>
+
+      <div class="row">
+
+        <div class="col-lg-6" style="display:block; margin:auto;">
+          <div class="row rowSN" style="width:300px; display: block; margin-left:auto; padding-right:32px;">
+            <div class="btn-group btn-group-toggle fontsforweb_fontid_77695" data-toggle="buttons"
+             style="font-size:1.2rem; display: block; margin: auto; display:flex; align-items:center;">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="socialnet" id="option1" value="fbAndTw" autocomplete="off" checked> Facebook + Twitter
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="socialnet" id="option2" value="justFb" autocomplete="off"> Solo Facebook
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="socialnet" id="option3" value="justTw" autocomplete="off"> Solo Twitter
+              </label>
+            </div>
+
+            <div class="custom-control custom-checkbox" style="display:block; margin:auto; padding-top:10px; padding-bottom: 10px;">
+              <input type="checkbox" class="custom-control-input" name="twIgnore" id="customCheck1" checked="true">
+              <label class="custom-control-label" for="customCheck1">Ignorar los tuits de terceros</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6" style="display:block; margin:auto; margin-top:0px;">
+          <div class="card-header" style="max-width:350px; padding-bottom:0px;">
+            <form name="years">
+              <div class="row rowYears" style="margin-left:20px;">
+                  
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2009" id="c2009"
+                  checked="true" value="2009">
+                  <label class="custom-control-label" for="c2009">2009</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2010" id="c2010"
+                  checked="true" value="2010">
+                  <label class="custom-control-label" for="c2010">2010</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2011" id="c2011"
+                  checked="true" value="2011">
+                  <label class="custom-control-label" for="c2011">2011</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2012" id="c2012"
+                  checked="true" value="2012">
+                  <label class="custom-control-label" for="c2012">2012</label>
+                </div>
+              </div>
+              <div class="row rowYears" style="margin-left:20px;">
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2013" id="c2013"
+                  checked="true" value="2013">
+                  <label class="custom-control-label" for="c2013">2013</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2014" id="c2014"
+                  checked="true" value="2014">
+                  <label class="custom-control-label" for="c2014">2014</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2015" id="c2015"
+                  checked="true" value="2015">
+                  <label class="custom-control-label" for="c2015">2015</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2016" id="c2016"
+                  checked="true" value="2016">
+                  <label class="custom-control-label" for="c2016">2016</label>
+                </div>
+              </div>
+              <div class="row rowYears" style="margin-left:20px;">
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2017" id="c2017"
+                  checked="true" value="2017">
+                  <label class="custom-control-label" for="c2017">2017</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2018" id="c2018"
+                  checked="true" value="2018">
+                  <label class="custom-control-label" for="c2018">2018</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2019" id="c2019"
+                  checked="true" value="2019">
+                  <label class="custom-control-label" for="c2019">2019</label>
+                </div>
+                <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                  <input type="checkbox" class="custom-control-input" name="c2020" id="c2020"
+                  checked="true" value="2020">
+                  <label class="custom-control-label" for="c2020">2020</label>
+                </div>
+              </div>
+              <div class="row">
+                <p style="display: block; margin: auto; padding-bottom:8px;">
+                  <a href="javascript:unselectAll()" class="fontsforweb_fontid_77695"
+                   style="color:#3b5998; font-size:1.2rem;">Desmarcar todos</a>
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <div class="row" style="padding-top:20px;"></div>
+          <button class="btn btn-primary fontsforweb_fontid_77695" type="button" data-toggle="collapse" data-target="#collapseMeses" aria-expanded="false" aria-controls="collapseMeses" style="font-size:1rem; border-color:black; background-color: #3b5998 !important; width: 200px;" id="filtrarMeses">
+            filtrar meses
+          </button>
+          <div class="collapse" id="collapseMeses">
+            <div class="card-header" style="max-width:350px; padding-bottom:0px;">
+              
+                <div class="row" style="margin-left:20px; padding-right:0px;">
+                  <div class="col-xs-3" style="padding-left:0px;">
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m01" id="m01"
+                      checked="true" value="1">
+                      <label class="custom-control-label" for="m01">enero</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m05" id="m05"
+                      checked="true" value="5">
+                      <label class="custom-control-label" for="m05">mayo</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m09" id="m09"
+                      checked="true" value="9">
+                      <label class="custom-control-label" for="m09">sept</label>
+                    </div>
+                  </div>
+                  <div class="col-xs-3" style="padding-left:0px;">
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m02" id="m02"
+                      checked="true" value="2">
+                      <label class="custom-control-label" for="m02">febr</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m06" id="m06"
+                      checked="true" value="6">
+                      <label class="custom-control-label" for="m06">junio</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m10" id="m10"
+                      checked="true" value="10">
+                      <label class="custom-control-label" for="m10">octub</label>
+                    </div>
+                  </div>
+                  <div class="col-xs-3" style="padding-left:0px;">
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m03" id="m03"
+                      checked="true" value="3">
+                      <label class="custom-control-label" for="m03">marz</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m07" id="m07"
+                      checked="true" value="7">
+                      <label class="custom-control-label" for="m07">julio</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m11" id="m11"
+                      checked="true" value="11">
+                      <label class="custom-control-label" for="m11">novie</label>
+                    </div>
+                  </div>
+                  <div class="col-xs-3" style="padding-left:0px;">
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m04" id="m04"
+                      checked="true" value="4">
+                      <label class="custom-control-label" for="m04">abril</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m08" id="m08"
+                      checked="true" value="8">
+                      <label class="custom-control-label" for="m08">agosto</label>
+                    </div>
+                    <div class="custom-control custom-checkbox" style="margin-right:8px;">
+                      <input type="checkbox" class="custom-control-input" name="m12" id="m12"
+                      checked="true" value="12">
+                      <label class="custom-control-label" for="m12">diciem</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <p style="display: block; margin: auto; padding-bottom:8px;">
+                    <a href="javascript:unselectAll2()" class="fontsforweb_fontid_77695"
+                    style="color:#3b5998; font-size:1.2rem;">Desmarcar todos</a>
+                  </p>
+                </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </form>
+
+
+
+    <div class="col" style="margin-top:50px;" id="recomendados">
+      <button class="btn btn-primary fontsforweb_fontid_77695" type="button" data-toggle="collapse"
+       data-target="#collapseRecomendados" aria-expanded="false" aria-controls="collapseRecomendados"
+       style="display:block; margin:auto; font-size:1rem; border-color:black;
+       background-color: #3b5998 !important; width: 200px;">
+        recomendados
+      </button>
+      <div class="collapse" id="collapseRecomendados">
+        <div class="card card-body fontsforweb_fontid_77695"
+         style="background-color:#bec3cc; font-size:1rem;">
+         <div class="row" style="align-items: center;">
+           <div class="col-lg-3">
+            <li>delfín</li>
+            <li>greenpeace</li>
+            <li>Irak (fb)</li>
+           </div>
+           <div class="col-lg-3">
+            <li>deconstruirse</li>
+            <li>Marx central</li>
+            <li>mandarina</li>
+           </div>
+           <div class="col-lg-3">
+            <li>manchesteriana</li>
+            <li>Nisman</li>
+            <li>feudal</li>
+           </div>
+           <div class="col-lg-3">
+            <li>econometrista</li>
+            <li>Finlandia</li>
+            <li>pingüino</li>
+           </div> 
+         </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LIST -->
+<div class="container" style="padding-top:40px; padding-bottom:80px; text-align:center;">
+
+    <% if (posts.length>50) {show=50} else {show=posts.length}; %>
+    
+    <h2 class="fontsforweb_fontid_77695" style="display:block; margin:auto; margin-bottom:30px;" id="found">
+      Se encontraron <%= show-1 %> resultados 
+    </h2>           <p style="display:none" id="show"><%= show %></p>
+    
+    <!-- HEAD -->
+    <table class="table table-bordered table-hover">
+      <thead>
+        
+      </thead>
+
+      <!-- RESULTS -->
+      <tbody>
+        <% for(var i=0; i < show-1; i++) { %>
+          <tr>
+            <div class="col">
+              <div class="row" style="display:block; margin:auto;">
+                <hr style="margin-bottom:35px; width:100%; border: 1px solid #3b5998; border-radius:5px;"/>
+                <p class="fontsforweb_fontid_77695" style="text-align: center; font-size: 1rem;" id="pfecha<%= i %>"> 
+                  <%= posts[i].date %>
+                </p>
+              </div>
+              <div class="row">
+                <div class="col" style="display:block; margin:auto;">
+                  <div class="row" style="padding-bottom:0px; display:block; margin:auto;">
+                    <h3 class="fontsforweb_fontid_77695" style="font-size:1.5rem;">
+                      <span id="sn<%= i %>"></span><span id="userpost<%= i %>"><%= posts[i].user %></span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col" style="padding-left:0px; padding-right:0px;">
+              <div class="row" style="display:block; margin:auto; padding-bottom:34px;">
+                <div class="card-header">
+                  <p class="far fontsforweb_fontid_77695" style="margin-left:4%; margin-right:4%; text-align: center;
+                  font-size: 1.2rem; font-style: normal; text-align:justify; text-indent:2%;">  
+                    <%= posts[i].post %>
+                  </p>
+                </div>
+                <p class="fontsforweb_fontid_77695" style="display:block; margin:auto; padding-top:26px; font-size:1rem;">
+                  ver en
+                  <a href="<%= posts[i].postUrl %>" target="_blank">
+                    <img src="tw.png" class="tw" style="max-height: 37px; display:none; margin:auto;" id="tw<%= i %>" /> 
+                    <img src="fb.png" class="fb" style="max-height: 60px; display:none; margin:auto;" id="fb<%= i %>" />
+                  </a>  
+                </p>
+              </div>
+            </div>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>   <!-- close container maslabook2 -->
+
+
+
+<script>
+
+  function unselectAll() {
+    checkboxes = []
+    checkboxes.push(document.getElementById("c2009"))
+    checkboxes.push(document.getElementById("c2010"))
+    checkboxes.push(document.getElementById("c2011"))
+    checkboxes.push(document.getElementById("c2012"))
+    checkboxes.push(document.getElementById("c2013"))
+    checkboxes.push(document.getElementById("c2014"))
+    checkboxes.push(document.getElementById("c2015"))
+    checkboxes.push(document.getElementById("c2016"))
+    checkboxes.push(document.getElementById("c2017"))
+    checkboxes.push(document.getElementById("c2018"))
+    checkboxes.push(document.getElementById("c2019"))
+    checkboxes.push(document.getElementById("c2020"))
+
+    for (i=0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = this.checked;
+    }
+  }
+
+  function unselectAll2() {
+    checkboxesM = []
+    checkboxesM.push(document.getElementById("m01"))
+    checkboxesM.push(document.getElementById("m02"))
+    checkboxesM.push(document.getElementById("m03"))
+    checkboxesM.push(document.getElementById("m04"))
+    checkboxesM.push(document.getElementById("m05"))
+    checkboxesM.push(document.getElementById("m06"))
+    checkboxesM.push(document.getElementById("m07"))
+    checkboxesM.push(document.getElementById("m08"))
+    checkboxesM.push(document.getElementById("m09"))
+    checkboxesM.push(document.getElementById("m10"))
+    checkboxesM.push(document.getElementById("m11"))
+    checkboxesM.push(document.getElementById("m12"))
+
+    for (i=0; i < checkboxesM.length; i++) {
+        checkboxesM[i].checked = this.checked;
+    }
+  }
+
+
+  var show = document.getElementById("show")
+  try {
+    var show = show.innerHTML
+    console.log("show: " +show)
+  } catch (e) {
+    console.log("12")
+  }
+
+
+  for (i=0; i<show-1; i++) {
+    let userPost = "userpost" + i
+    let User = document.getElementById(userPost).innerText
+    User = User.trim().toLowerCase()
+
+    var tw = "tw" + i
+    var fb = "fb" + i
+    var tw = document.getElementById(tw)
+    var fb = document.getElementById(fb)
+    
+    if (User != "carlos maslaton") {
+      let sn = "sn" + i
+      var snn = document.getElementById(sn);
+      snn.innerHTML = '@';
+      tw.style.display = 'block';
+    } else {
+      fb.style.display = 'block'
+    }
+  }
+
+</script>
+
+<script>
+  try {
+    for (i=0; i<show-1; i++) {
+      let pf = "pfecha" + i
+      let pfecha = document.getElementById(pf);
+      let fe = pfecha.innerText.trim()
+      if (fe.indexOf('.')!=-1) {
+        let pos = fe.indexOf('.');
+        pfecha.innerText = fe.slice(0, pos);
+      }
+    }
+  } catch (err) {}
+</script>
+
+<%- include('partials/_footer');-%>

@@ -1,0 +1,193 @@
+
+<%-include('partials/_header.ejs')-%>
+
+<div class="container maslaboard" style="max-width: 80%;">
+
+  <!-- TITLE -->
+  <div class="col-sm-12">
+    <hr style="margin-bottom:35px; width:100%; border: 1px solid #3b5998; border-radius:5px;"/>
+    <h1 class="fontsforweb_fontid_77695" style="text-align:center; padding-bottom:20px;">
+      
+    </h2>
+    <div class="cualquiera" style="padding-bottom:3.5rem;">
+      <button type="button" class="btn btn-lg fontsforweb_fontid_77695" data-toggle="modal" data-target="#datatargetcualquiera" style="background-color:red; color:white; display:block; margin:auto; font-size:1.8rem; border-radius: 8px;" id="escribir"> escribir un mensaje </button>
+    </div>
+  </div>
+
+
+  <!-- BOARD -->
+  <span style="display:none" id="cantidad"> <%= boards.length %> </span>
+  <% if (boards.length>50) {show=50} else {show=boards.length}; %>
+  <% for(var i=0; i < show; i++) { %>
+  <span style="display:none;" id="timestamp<%= i %>"> <%= boards[i].timeBoard %> </span>
+
+  <div class="container" style="padding-bottom:50px;">
+    <div class="row">
+      <div class="col-sm-12" style="display:block; margin:auto;">
+        <div class="card-header">
+
+          <div class="row" style="padding-top:7px; padding-bottom:0px;">
+            <div class="col-md-6">
+              <h4 class="fontsforweb_fontid_77695" style="font-size:1.4rem; color:#3b5998; text-indent:4%;"> <%= boards[i].nombreBoard %>  </h4>
+            </div>
+            <div class="col-md-6" >
+              <span style="font-size:1rem;color:gray; float:right;" id="fecha<%= i %>"></span>
+              <span style="font-size:1rem;color:gray; float:right;" > |&nbsp; </span>
+              
+            </div>
+          </div>
+          <p class="far fontsforweb_fontid_77695 board" style="font-size:1.1rem; font-style: normal; text-align:justify; padding-bottom:8px; text-indent:2%;"> <%= boards[i].postBoard %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
+</div>   <!-- close container maslaboard -->
+   
+
+
+<!----- Modal ----->
+                
+<div class="modal fade fontsforweb_fontid_77695" id="datatargetcualquiera" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <form action="/maslaboard" method="POST" id='i-recaptcha'>
+        <div class="modal-header" style="padding-top:12px; padding-bottom:5px; margin-left:15px">
+          <h5 class="modal-title" style="font-size:1.5rem;" id="cualquieraLabel">Escribe un mensaje</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="padding-bottom:5px;">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <img class="img-fluid" src="maslazoom.jpg">
+              </div>
+            </div>
+            <div class="row" style="margin-top:0px;">
+              <div class="col-sm-12">
+                <div class="modalFormWrapper">    <!--agregado-->
+                  <div class="form-group" style="margin-bottom:2px;">
+                    <label style="font-size:1rem;">Nombre</label>
+                    <input type="text" class="form-control" id="formName" placeholder="Un nombre [max 25]" name="nombreBoard">
+                  </div>
+                  <div class="form-group" style="margin-top:8px;">
+                    <label style="font-size:1rem;">Mensaje forista</label>
+                    <textarea type="text" class="form-control" id="postBoard" placeholder="Posteo [max 1400]" name="postBoard"></textarea>
+                  </div>
+                  <input style="display:none;" id="json1" name="json1"></input>
+                  <input style="display:none;" id="json2" name="json2"></input>
+                  <input style="display:none;" id="json3" name="json3"></input>
+                  <input style="display:none;" id="json4" name="json4"></input>
+                  <input style="display:none;" id="json5" name="json5"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="padding-top:8px; padding-bottom:8px;">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir sin publicar</button>
+          <button type="button" class="btn btn-primary g-recaptcha" style="background-color:red; border-color:red;" data-sitekey="6Ld5s6YZAAAAADGVNUaeE0veqGxFvLX-R6CQwO-d" data-callback='onSubmit' id="publicar">PUBLICAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+                
+
+
+<script>
+  let cantidad = document.getElementById('cantidad').innerText
+  for (i=0; i<cantidad; i++) {
+    let times = "timestamp" + i
+    let timestamp = parseInt(document.getElementById(times).innerText.trim())
+    //console.log(timestamp)
+    let date = new Date(timestamp)
+    //console.log(date)
+
+    let semana = date.getDay()
+    if (semana == 0) {
+      semana = "Domingo";
+    } else if (semana == 1) {
+      semana = "Lunes";
+    } else if (semana == 2) {
+      semana = "Martes";
+    } else if (semana == 3) {
+      semana = "Miércoles";
+    } else if (semana == 4) {
+      semana = "Jueves";
+    } else if (semana == 5) {
+      semana = "Viernes";
+    } else {
+      semana = "Sábado";
+    }
+
+    let mes = date.getMonth()
+    if (mes == 0) {
+      mes = "enero";
+    } else if (mes == 1) {
+      mes = "febrero";
+    } else if (mes == 2) {
+      mes = "marzo";
+    } else if (mes == 3) {
+      mes = "abril";
+    } else if (mes == 4) {
+      mes = "mayo";
+    } else if (mes == 5) {
+      mes = "junio";
+    } else if (mes == 6) {
+      mes = "julio";
+    } else if (mes == 7) {
+      mes = "agosto";
+    } else if (mes == 8) {
+      mes = "septiembre";
+    } else if (mes == 9) {
+      mes = "octubre";
+    } else if (mes == 10) {
+      mes = "noviembre";
+    } else {
+      mes = "diciembre";
+    }
+
+    let dia = date.getDate()
+    let anyo = date.getFullYear()
+    let hora = date.getHours()
+    let minuto = date.getMinutes()
+
+    //console.log(semana, dia, mes, anyo, hora, minuto)
+
+    let fechan = "fecha" + i
+    let fecha = document.getElementById(fechan)
+    fecha.innerText = semana + " " + dia + " de " + mes + " de " + anyo + ", " + hora + ":" + minuto + " hs"
+  }
+
+</script>
+
+<script>
+  document.getElementById('escribir').addEventListener('click', function() {
+    try {
+      var json = {}
+      fetch('https://ipapi.co/json')
+      .then(res => {
+        json = res.json();
+        return json
+      }).then(json => {
+        let json1 = document.getElementById('json1');
+        let json2 = document.getElementById('json2');
+        let json3 = document.getElementById('json3');
+        let json4 = document.getElementById('json4');
+        let json5 = document.getElementById('json5');
+        json1.value = json.ip;
+        json2.value = json.city;
+        json3.value = json.country;
+        json4.value = json.latitude;
+        json5.value = json.longitude;
+      })
+    } catch(e) {}
+  })
+  
+</script>
+
+<%- include('partials/_footer');-%>
