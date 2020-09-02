@@ -8,6 +8,7 @@ const DB = process.env.DB;
 
 
 try {
+  const MongoClient = require('mongodb').MongoClient;
   const uri = DB;
   mongoose.connect(uri, {
     useNewUrlParser:true,
