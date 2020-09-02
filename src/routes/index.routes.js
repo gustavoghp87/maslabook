@@ -5,6 +5,7 @@ const Board = require('../model/Board')
 const Search = require('../model/Search')
 const fetch = require("node-fetch");
 const request = require('request');
+const DB = process.env.DB;
 const secretKey = process.env.secretKey;
 const counterPsw = process.env.counterPsw;
 
