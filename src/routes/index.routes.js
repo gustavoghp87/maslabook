@@ -29,7 +29,6 @@ router.post('/search', async (req, res, next) => {
     //   return res.json({"success": false, "msg": "Captcha no seleccionado"});
     // }
   
-    const secretKey = process.env.secretKey;
     const respon = obj['g-recaptcha-response'];
   
     const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${respon}&remoteip=${req.connection.remoteAddress}`;
@@ -286,7 +285,6 @@ router.post('/maslaboard', async (req, res) => {
   try {
     const obj = JSON.parse(JSON.stringify(req.body));
     const respon = obj['g-recaptcha-response'];
-
     const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${respon}&remoteip=${req.connection.remoteAddress}`;
 
     request(verifyURL, (err, response, body) => {
