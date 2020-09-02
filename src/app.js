@@ -4,10 +4,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const app = express();
 
-require('dotenv').config();
-const DB = process.env.DB;
-console.log(DB);
-console.log("counter", process.env.counterPsw)
+const env = require('../env.json');
+const DB = env.DB;
 
 try {
   const uri = DB;

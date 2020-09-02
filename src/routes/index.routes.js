@@ -6,10 +6,9 @@ const Search = require('../model/Search')
 const fetch = require("node-fetch");
 const request = require('request');
 
-require('dotenv').config();
-const DB = process.env.DB;
-const secretKey = process.env.secretKey;
-const counterPsw = process.env.counterPsw;
+const env = require('../../env.json')
+const secretKey = env.secretKey;
+const counterPsw = env.counterPsw;
 
 
 router.get('/', async (req, res) => {
